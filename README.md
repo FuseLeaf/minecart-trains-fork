@@ -1,6 +1,6 @@
 # Minecart Trains Fork
 
-This project was originally forked from [Minecart Trains](https://github.com/Larsens-Mods/minecart-trains), but now it's independent.
+Inspired by the original [Minecart Trains](https://github.com/Larsens-Mods/minecart-trains) by LarsenR. Reworks and improves minecart transportation, making it more fun and useful as a train system!
 
 - This mod allows you to build more realistic Minecart trains in Minecraft while trying to stay close to vanilla mechanics.
 - The **Server** is responsible for connecting the carts, and the **Client** is responsible for rendering the connection effect.
