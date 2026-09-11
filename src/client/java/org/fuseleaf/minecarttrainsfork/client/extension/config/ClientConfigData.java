@@ -7,7 +7,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "minecart-trains-fork-client")
-public class ClientConfigValue implements ConfigData {
+public class ClientConfigData implements ConfigData {
 
     /* General */
 
