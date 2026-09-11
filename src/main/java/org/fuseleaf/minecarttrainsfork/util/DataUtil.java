@@ -3,13 +3,15 @@ package org.fuseleaf.minecarttrainsfork.util;
 import java.util.UUID;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+
+import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.jetbrains.annotations.Nullable;
 
 public class DataUtil {
 
     private DataUtil() {}
 
-    public static void writeData(ValueOutput view, IChainableUtil icu) {
+    public static void writeData(ValueOutput view, Chainable icu) {
         view.putLong("ParentUUIDMost", icu.getParentUUID() != null ? icu.getParentUUID().getMostSignificantBits() : 0L);
         view.putLong("ParentUUIDLeast", icu.getParentUUID() != null ? icu.getParentUUID().getLeastSignificantBits() : 0L);
 
@@ -18,7 +20,7 @@ public class DataUtil {
     }
 
 
-    public static void readData(ValueInput view, IChainableUtil icu) {
+    public static void readData(ValueInput view, Chainable icu) {
         long parentMost = view.getLongOr("ParentUUIDMost", 0L);
         long parentLeast = view.getLongOr("ParentUUIDLeast", 0L);
         @Nullable UUID parentUUID = (parentMost != 0L || parentLeast != 0L) ? new UUID(parentMost, parentLeast) : null;

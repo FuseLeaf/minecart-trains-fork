@@ -1,8 +1,8 @@
-package org.fuseleaf.minecarttrainsfork.util;
+package org.fuseleaf.minecarttrainsfork.chaining;
 
 import java.util.UUID;
 
-import org.fuseleaf.minecarttrainsfork.manager.NetworkManager;
+import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -11,11 +11,11 @@ import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-public class UnLinkUtil {
+public class UnLink {
 
-    private UnLinkUtil() {}
+    private UnLink() {}
 
-    public static void unlinkHandle(IChainableUtil icu, ServerLevel world) {
+    public static void unlinkHandle(Chainable icu, ServerLevel world) {
         UUID parentUUID = icu.getParentUUID();
         UUID childUUID = icu.getChildUUID();
 
@@ -24,7 +24,7 @@ public class UnLinkUtil {
 
             Entity parentEntity = world.getEntity(parentUUID);
 
-            if (parentEntity instanceof IChainableUtil parent) {
+            if (parentEntity instanceof Chainable parent) {
                 parent.setChildUUID(null);
 
                 NetworkManager.sendRelationshipPayload(null, parentEntity.getUUID(), world);
@@ -35,7 +35,7 @@ public class UnLinkUtil {
         if (childUUID != null) {
             Entity childEntity = world.getEntity(childUUID);
 
-            if (childEntity instanceof IChainableUtil child) {
+            if (childEntity instanceof Chainable child) {
                 child.setParentUUID(null);
 
                 NetworkManager.sendRelationshipPayload(childEntity.getUUID(), null, world);

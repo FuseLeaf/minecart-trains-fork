@@ -1,11 +1,10 @@
 package org.fuseleaf.minecarttrainsfork.extension.config;
 
-import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "minecart-trains-fork-server")
-public class ConfigValue implements ConfigData {
+public class ConfigData implements me.shedaniel.autoconfig.ConfigData {
 
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.PrefixText

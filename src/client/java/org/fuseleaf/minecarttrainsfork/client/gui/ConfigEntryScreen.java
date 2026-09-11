@@ -3,7 +3,7 @@ package org.fuseleaf.minecarttrainsfork.client.gui;
 import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
 import org.fuseleaf.minecarttrainsfork.client.util.ToastUtil;
-import org.fuseleaf.minecarttrainsfork.extension.config.ConfigValue;
+import org.fuseleaf.minecarttrainsfork.extension.config.ConfigData;
 
 import me.shedaniel.autoconfig.AutoConfigClient;
 import net.minecraft.ChatFormatting;
@@ -50,7 +50,7 @@ public class ConfigEntryScreen extends Screen {
                     if (isMultiplayerWorld) {
                         this.minecraft.gui.setScreen(IllegalOperationScreen.get(this));
                     } else {
-                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ConfigValue.class, this).get());
+                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ConfigData.class, this).get());
                     }
                 }
             )

@@ -1,4 +1,4 @@
-package org.fuseleaf.minecarttrainsfork.util;
+package org.fuseleaf.minecarttrainsfork.chaining;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
 
@@ -10,9 +10,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-public class ExitUtil {
+public class Exit {
 
-    private ExitUtil() {}
+    private Exit() {}
 
     public static void exit(ItemStack current, ItemStack lastMainHand, Player player) {
 
@@ -31,7 +31,7 @@ public class ExitUtil {
                 ItemStack stack = inv.getItem(i);
 
                 if (stack.is(Items.IRON_CHAIN)) {
-                    stack.remove(ComponentUtil.PARENT_ID);
+                    stack.remove(ChainableComponents.PARENT_ID);
                 }
             }
 

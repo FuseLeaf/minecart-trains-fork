@@ -1,14 +1,15 @@
-package org.fuseleaf.minecarttrainsfork.util;
+package org.fuseleaf.minecarttrainsfork.chaining;
 
 import java.util.UUID;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+
 import org.jetbrains.annotations.Nullable;
 
-public class LinkUtil {
+public class Link {
 
-    private LinkUtil() {}
+    private Link() {}
 
-    public static void setChainedParent(@Nullable AbstractMinecart newParent, IChainableUtil icu) {
+    public static void setChainedParent(@Nullable AbstractMinecart newParent, Chainable icu) {
         if(newParent != null) {
             @Nullable UUID parentUUID = newParent.getUUID();
             icu.setParentUUID(parentUUID);
@@ -18,7 +19,7 @@ public class LinkUtil {
         }
     }
 
-    public static void setChainedChild(@Nullable AbstractMinecart newChild, IChainableUtil icu) {
+    public static void setChainedChild(@Nullable AbstractMinecart newChild, Chainable icu) {
         if(newChild != null) {
             @Nullable UUID childUUID = newChild.getUUID();
             icu.setChildUUID(childUUID);

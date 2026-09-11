@@ -2,10 +2,10 @@ package org.fuseleaf.minecarttrainsfork.client.initializer;
 
 import java.util.UUID;
 
+import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
-import org.fuseleaf.minecarttrainsfork.manager.NetworkManager;
-import org.fuseleaf.minecarttrainsfork.util.IChainableUtil;
+import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
@@ -48,7 +48,7 @@ public class ClientInitializer {
                             UUID parentUUID = payload.parentUUID();
 
                             if (childUUID != null) {
-                                IChainableUtil childChainableUtil = (IChainableUtil) clientWorld.getEntity(childUUID);
+                                Chainable childChainableUtil = (Chainable) clientWorld.getEntity(childUUID);
 
                                 if (childChainableUtil != null) {
                                     childChainableUtil.setParentUUID(parentUUID);
@@ -56,7 +56,7 @@ public class ClientInitializer {
                             }
 
                             if (parentUUID != null) {
-                                IChainableUtil parentChainableUtil = (IChainableUtil) clientWorld.getEntity(parentUUID);
+                                Chainable parentChainableUtil = (Chainable) clientWorld.getEntity(parentUUID);
 
                                 if (parentChainableUtil != null) {
                                     parentChainableUtil.setChildUUID(childUUID);

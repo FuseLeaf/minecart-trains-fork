@@ -3,8 +3,8 @@ package org.fuseleaf.minecarttrainsfork.client.render;
 import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
+import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
-import org.fuseleaf.minecarttrainsfork.util.IChainableUtil;
 import org.joml.Matrix4f;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -41,7 +41,7 @@ public class ChainingRender {
             return;
         }
 
-        UUID parentCartUuid = ((IChainableUtil) cart).getParentUUID();
+        UUID parentCartUuid = ((Chainable) cart).getParentUUID();
 
         if (parentCartUuid == null) {
             return;
@@ -193,7 +193,7 @@ public class ChainingRender {
             return;
         }
 
-        UUID parentCartUuid = ((IChainableUtil) cart).getParentUUID();
+        UUID parentCartUuid = ((Chainable) cart).getParentUUID();
 
         if (parentCartUuid != null && world.getEntity(parentCartUuid) != null) {
             return;
@@ -263,7 +263,7 @@ public class ChainingRender {
             return;
         }
 
-        UUID parentCartUuid = ((IChainableUtil) cart).getParentUUID();
+        UUID parentCartUuid = ((Chainable) cart).getParentUUID();
 
         if (parentCartUuid == null) {
             return;

@@ -1,6 +1,6 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
-import org.fuseleaf.minecarttrainsfork.util.ComponentUtil;
+import org.fuseleaf.minecarttrainsfork.chaining.ChainableComponents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -17,7 +17,7 @@ public class ItemStackMixin {
         ItemStack result = cir.getReturnValue();
 
         if (result.is(Items.IRON_CHAIN)) {
-            result.remove(ComponentUtil.PARENT_ID);
+            result.remove(ChainableComponents.PARENT_ID);
         }
     }
 
@@ -26,7 +26,7 @@ public class ItemStackMixin {
         ItemStack result = cir.getReturnValue();
 
         if (result.is(Items.IRON_CHAIN)) {
-            result.remove(ComponentUtil.PARENT_ID);
+            result.remove(ChainableComponents.PARENT_ID);
         }
     }
 }

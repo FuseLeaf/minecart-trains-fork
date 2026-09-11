@@ -1,6 +1,8 @@
-package org.fuseleaf.minecarttrainsfork.manager;
+package org.fuseleaf.minecarttrainsfork.train;
 
-import org.fuseleaf.minecarttrainsfork.util.IChainableUtil;
+import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
+import org.fuseleaf.minecarttrainsfork.config.ConfigManager;
+import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -9,12 +11,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 
-public class TrainManager {
+public class TrainBehavior {
 
     public static void tick(AbstractMinecart entity) {
         if (!entity.level().isClientSide()) {
 
-            IChainableUtil entityIChainable = (IChainableUtil)entity;
+            Chainable entityIChainable = (Chainable)entity;
 
             if (entityIChainable.getChainedParent() != null) {
                 double distance = entityIChainable.getChainedParent().distanceTo(entity) - 1;
@@ -42,14 +44,14 @@ public class TrainManager {
                     AbstractMinecart parentCart = entityIChainable.getChainedParent();
 
                     if (ConfigManager.isEnabledBrakingAfterTrainSeparation()) {
-                        for (AbstractMinecart cart = entity; ((IChainableUtil)cart).getChainedParent() != null; cart = (AbstractMinecart)((IChainableUtil)cart).getChainedParent()) {
-                            AbstractMinecart parent = ((IChainableUtil)cart).getChainedParent();
+                        for (AbstractMinecart cart = entity; ((Chainable)cart).getChainedParent() != null; cart = (AbstractMinecart)((Chainable)cart).getChainedParent()) {
+                            AbstractMinecart parent = ((Chainable)cart).getChainedParent();
                             parent.setDeltaMovement(Vec3.ZERO);
                             cart.setDeltaMovement(Vec3.ZERO);
                         }
                     }
 
-                    IChainableUtil.unsetChainedParentChild((IChainableUtil)parentCart, entityIChainable);
+                    Chainable.unsetChainedParentChild((Chainable)parentCart, entityIChainable);
                     entity.spawnAtLocation((ServerLevel) entity.level(), new ItemStack(Items.IRON_CHAIN));
 
                     NetworkManager.sendRelationshipPayload(entity.getUUID(), null, entity.level());
@@ -61,7 +63,7 @@ public class TrainManager {
                 if (entityIChainable.getChainedParent().isRemoved()) {
                     AbstractMinecart parentCart = entityIChainable.getChainedParent();
 
-                    IChainableUtil.unsetChainedParentChild((IChainableUtil)parentCart, entityIChainable);
+                    Chainable.unsetChainedParentChild((Chainable)parentCart, entityIChainable);
 
                     NetworkManager.sendRelationshipPayload(entity.getUUID(), null, entity.level());
                     NetworkManager.sendRelationshipPayload(null, parentCart.getUUID(), entity.level());
@@ -71,7 +73,7 @@ public class TrainManager {
             if (entityIChainable.getChainedChild() != null && entityIChainable.getChainedChild().isRemoved()) {
                 AbstractMinecart childCart = entityIChainable.getChainedChild();
 
-                IChainableUtil.unsetChainedParentChild(entityIChainable, (IChainableUtil)childCart);
+                Chainable.unsetChainedParentChild(entityIChainable, (Chainable)childCart);
 
                 NetworkManager.sendRelationshipPayload(childCart.getUUID(), null, entity.level());
                 NetworkManager.sendRelationshipPayload(null, childCart.getUUID(), entity.level());

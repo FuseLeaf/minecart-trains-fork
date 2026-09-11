@@ -1,4 +1,4 @@
-package org.fuseleaf.minecarttrainsfork.manager;
+package org.fuseleaf.minecarttrainsfork.network;
 
 import java.util.UUID;
 
