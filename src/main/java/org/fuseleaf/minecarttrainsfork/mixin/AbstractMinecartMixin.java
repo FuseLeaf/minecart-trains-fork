@@ -2,7 +2,7 @@ package org.fuseleaf.minecarttrainsfork.mixin;
 
 import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.chaining.ChainableData;
-import org.fuseleaf.minecarttrainsfork.chaining.Link;
+import org.fuseleaf.minecarttrainsfork.chaining.Connection;
 import org.fuseleaf.minecarttrainsfork.train.TrainBehavior;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -61,7 +61,7 @@ public class AbstractMinecartMixin implements Chainable {
 
     @Override
     public void setChainedParent(@Nullable AbstractMinecart newParent) {
-        Link.setChainedParent(newParent, (Chainable)(Object)this);
+        Connection.setChainedParent(newParent, (Chainable)(Object)this);
     }
 
 
@@ -78,7 +78,7 @@ public class AbstractMinecartMixin implements Chainable {
 
     @Override
     public void setChainedChild(@Nullable AbstractMinecart newChild) {
-        Link.setChainedChild(newChild, (Chainable)(Object)this);
+        Connection.setChainedChild(newChild, (Chainable)(Object)this);
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))

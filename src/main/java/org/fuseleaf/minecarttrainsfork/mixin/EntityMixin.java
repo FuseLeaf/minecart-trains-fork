@@ -1,7 +1,7 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
 import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
-import org.fuseleaf.minecarttrainsfork.chaining.UnLink;
+import org.fuseleaf.minecarttrainsfork.chaining.Connection;
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,7 +36,7 @@ public class EntityMixin {
 
             if (!world.isClientSide()) {
                 ServerLevel serverWorld = (ServerLevel)world;
-                UnLink.unlinkHandle(icu, serverWorld);
+                Connection.unlink(icu, serverWorld);
             }
         }
     }

@@ -99,7 +99,7 @@ public class Chaining {
 
             if (!world.isClientSide()) {
                 ServerLevel serverWorld = (ServerLevel)world;
-                UnLink.unlinkHandle(icu, serverWorld);
+                Connection.unlink(icu, serverWorld);
             }
 
             return InteractionResult.SUCCESS;

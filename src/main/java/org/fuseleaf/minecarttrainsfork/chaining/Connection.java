@@ -3,6 +3,7 @@ package org.fuseleaf.minecarttrainsfork.chaining;
 import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
+import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -11,11 +12,29 @@ import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-public class UnLink {
+public class Connection {
+    
+    public static void setChainedParent(@Nullable AbstractMinecart newParent, Chainable icu) {
+        if(newParent != null) {
+            @Nullable UUID parentUUID = newParent.getUUID();
+            icu.setParentUUID(parentUUID);
+        } else {
+            @Nullable UUID parentUUID = null;
+            icu.setParentUUID(parentUUID);
+        }
+    }
 
-    private UnLink() {}
+    public static void setChainedChild(@Nullable AbstractMinecart newChild, Chainable icu) {
+        if(newChild != null) {
+            @Nullable UUID childUUID = newChild.getUUID();
+            icu.setChildUUID(childUUID);
+        } else {
+            @Nullable UUID childUUID = null;
+            icu.setChildUUID(childUUID);
+        }
+    }
 
-    public static void unlinkHandle(Chainable icu, ServerLevel world) {
+    public static void unlink(Chainable icu, ServerLevel world) {
         UUID parentUUID = icu.getParentUUID();
         UUID childUUID = icu.getChildUUID();
 
