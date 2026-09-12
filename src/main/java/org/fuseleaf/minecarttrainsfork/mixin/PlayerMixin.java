@@ -1,6 +1,6 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
-import org.fuseleaf.minecarttrainsfork.chaining.Exit;
+import org.fuseleaf.minecarttrainsfork.chaining.Connection;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +22,7 @@ public class PlayerMixin {
 
         // 检查是否发生变化
         if (lastMainHand != null && !ItemStack.matches(current, lastMainHand)) {
-            Exit.exit(current, lastMainHand, player);
+            Connection.exit(current, lastMainHand, player);
             lastMainHand = current.copy();  // 更新缓存
         }
     }

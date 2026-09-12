@@ -2,12 +2,18 @@ package org.fuseleaf.minecarttrainsfork.chaining;
 
 import java.util.UUID;
 
+import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 import org.jetbrains.annotations.Nullable;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -103,6 +109,33 @@ public class Connection {
                 ItemEntity itemEntity = new ItemEntity(world, x, y, z, new ItemStack(Items.IRON_CHAIN));
                 world.addFreshEntity(itemEntity);
             }
+        }
+    }
+
+    public static void exit(ItemStack current, ItemStack lastMainHand, Player player) {
+
+        if (!lastMainHand.is(Items.IRON_CHAIN) && current.is(Items.IRON_CHAIN)) {
+            player.sendOverlayMessage(Component.translatable(MinecartTrainsFork.MOD_ID + " ")
+                .append(Component.translatable("message.minecart-trains-fork.chainingstarted"))
+                .setStyle(Style.EMPTY.withInsertion("MINECARTTRAINSFORK_OPTIONAL"))
+                .withStyle(ChatFormatting.GREEN));
+        }
+
+        if (lastMainHand.is(Items.IRON_CHAIN) && !current.is(Items.IRON_CHAIN)) {
+            Inventory inv = player.getInventory();
+
+            for (int i = 0; i < inv.getContainerSize(); i++) {
+                ItemStack stack = inv.getItem(i);
+
+                if (stack.is(Items.IRON_CHAIN)) {
+                    stack.remove(ChainableComponents.PARENT_ID);
+                }
+            }
+
+            player.sendOverlayMessage(Component.translatable(MinecartTrainsFork.MOD_ID + " ")
+                .append(Component.translatable("message.minecart-trains-fork.chainingcleared"))
+                .setStyle(Style.EMPTY.withInsertion("MINECARTTRAINSFORK_OPTIONAL"))
+                .withStyle(ChatFormatting.YELLOW));
         }
     }
 }
