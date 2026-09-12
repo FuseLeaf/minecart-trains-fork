@@ -19,7 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 public class Connection {
-    
+
     public static void setChainedParent(@Nullable AbstractMinecart newParent, Chainable icu) {
         if(newParent != null) {
             @Nullable UUID parentUUID = newParent.getUUID();
