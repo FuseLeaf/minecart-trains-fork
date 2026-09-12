@@ -6,6 +6,7 @@ import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
+import org.fuseleaf.minecarttrainsfork.network.RelationshipPayload;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
@@ -38,7 +39,7 @@ public class ClientInitializer {
 
         private static void init() {
             ClientPlayNetworking.registerGlobalReceiver(
-                NetworkManager.RelationshipPayload.TYPE,
+                RelationshipPayload.TYPE,
                 (payload, context) -> {
                     context.client().execute(() -> {
                         ClientLevel clientWorld = Minecraft.getInstance().level;

@@ -5,7 +5,7 @@ import org.fuseleaf.minecarttrainsfork.chaining.ChainableComponents;
 import org.fuseleaf.minecarttrainsfork.chaining.Chaining;
 import org.fuseleaf.minecarttrainsfork.config.ConfigManager;
 import org.fuseleaf.minecarttrainsfork.extension.config.ConfigData;
-import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
+import org.fuseleaf.minecarttrainsfork.network.RelationshipPayload;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
@@ -59,7 +59,7 @@ public class Initializer {
     private static class Network {
 
         private static void init() {
-            PayloadTypeRegistry.clientboundPlay().register(NetworkManager.RelationshipPayload.TYPE, NetworkManager.RelationshipPayload.CODEC);
+            PayloadTypeRegistry.clientboundPlay().register(RelationshipPayload.TYPE, RelationshipPayload.CODEC);
         }
     }
 }
