@@ -1,9 +1,9 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
 import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
+import org.fuseleaf.minecarttrainsfork.chaining.ChainableData;
 import org.fuseleaf.minecarttrainsfork.chaining.Link;
 import org.fuseleaf.minecarttrainsfork.train.TrainBehavior;
-import org.fuseleaf.minecarttrainsfork.util.DataUtil;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -83,11 +83,11 @@ public class AbstractMinecartMixin implements Chainable {
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     public void injectAddAdditionalSaveData(ValueOutput writeView, CallbackInfo ci) {
-        DataUtil.writeData(writeView, (Chainable)(Object)this);
+        ChainableData.write(writeView, (Chainable)(Object)this);
     }
 
     @Inject(method="readAdditionalSaveData", at = @At("TAIL"))
     public void injectReadAdditionalSaveData(ValueInput readView, CallbackInfo ci) {
-        DataUtil.readData(readView, (Chainable)(Object)this);
+        ChainableData.read(readView, (Chainable)(Object)this);
     }
 }
