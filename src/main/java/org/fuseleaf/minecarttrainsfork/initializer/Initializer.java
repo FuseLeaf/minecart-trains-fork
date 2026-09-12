@@ -51,7 +51,7 @@ public class Initializer {
 
         private static void init() {
             UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
-                return Chaining.init(entity, player, hand, world, ChainableComponents.PARENT_ID);
+                return Chaining.handle(entity, player, hand, world, ChainableComponents.PARENT_ID);
             });
         }
     }

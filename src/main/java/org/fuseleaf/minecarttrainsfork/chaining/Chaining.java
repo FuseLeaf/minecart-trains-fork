@@ -109,7 +109,7 @@ public class Chaining {
         }
     }
 
-    public static @NonNull InteractionResult init(Entity entity, Player player, InteractionHand hand, Level world, @NonNull DataComponentType<@NonNull UUID> parentID) {
+    public static @NonNull InteractionResult handle(Entity entity, Player player, InteractionHand hand, Level world, @NonNull DataComponentType<@NonNull UUID> parentID) {
         if (entity instanceof AbstractMinecart cart && hand != null) {
             ItemStack stack = player.getItemInHand(hand);
 
