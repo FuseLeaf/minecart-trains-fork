@@ -5,7 +5,6 @@ import java.util.UUID;
 import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
-import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 import org.fuseleaf.minecarttrainsfork.network.RelationshipPayload;
 
 import me.shedaniel.autoconfig.AutoConfig;
