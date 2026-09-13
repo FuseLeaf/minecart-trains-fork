@@ -1,4 +1,4 @@
-package org.fuseleaf.minecarttrainsfork.util;
+package org.fuseleaf.minecarttrainsfork.chaining;
 
 import java.util.UUID;
 
@@ -10,9 +10,9 @@ import net.minecraft.network.codec.StreamCodec;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ComponentUtil {
+public class ChainableComponents {
 
-    private ComponentUtil() {}
+    private ChainableComponents() {}
 
     @SuppressWarnings("null")
     public static final @NonNull DataComponentType<@NonNull UUID> PARENT_ID = DataComponentType.<UUID>builder().persistent(

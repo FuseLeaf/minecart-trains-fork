@@ -1,4 +1,4 @@
-package org.fuseleaf.minecarttrainsfork.util;
+package org.fuseleaf.minecarttrainsfork.chaining;
 
 import java.util.UUID;
 
@@ -6,7 +6,7 @@ import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface IChainableUtil {
+public interface Chainable {
 
     /* Interfaces cannot have constructors */
 
@@ -36,15 +36,15 @@ public interface IChainableUtil {
     }
 
     // 建立连接：先清理旧关系，再建立新关系
-    static void setChainedParentChild(@NotNull IChainableUtil parent, @NotNull IChainableUtil child) {
-        unsetChainedParentChild(parent, (IChainableUtil)parent.getChainedChild());
-        unsetChainedParentChild(child, (IChainableUtil)child.getChainedParent());
+    static void setChainedParentChild(@NotNull Chainable parent, @NotNull Chainable child) {
+        unsetChainedParentChild(parent, (Chainable)parent.getChainedChild());
+        unsetChainedParentChild(child, (Chainable)child.getChainedParent());
         parent.setChainedChild(child.getAbstractMinecartEntity());
         child.setChainedParent(parent.getAbstractMinecartEntity());
     }
 
     // 断开连接：同时清理引用和 ID
-    static void unsetChainedParentChild(@Nullable IChainableUtil parent, @Nullable IChainableUtil child) {
+    static void unsetChainedParentChild(@Nullable Chainable parent, @Nullable Chainable child) {
         if (parent != null) {
             parent.setChainedChild(null);
         }

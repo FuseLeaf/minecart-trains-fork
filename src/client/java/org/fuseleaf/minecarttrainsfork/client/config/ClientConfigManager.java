@@ -1,26 +1,38 @@
-package org.fuseleaf.minecarttrainsfork.client.manager;
+package org.fuseleaf.minecarttrainsfork.client.config;
 
 import net.minecraft.core.particles.SimpleParticleType;
 
-import static org.fuseleaf.minecarttrainsfork.client.manager.ClientLoadManager.config;
-
+import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
 import org.jspecify.annotations.NonNull;
 
 public class ClientConfigManager {
+
+    private static ClientConfigData config;
+
+    public static void setConfigData(ClientConfigData configData) {
+        if (configData != null) {
+            config = configData;
+        }
+    }
+
+    public static boolean isConfigAvailable() {
+        return config != null;
+    }
+
     public static boolean isEnabledLinkLine() {
-        return config != null ? config.enabledLinkLine : true;
+        return isConfigAvailable() ? config.enabledLinkLine : true;
     }
 
     public static boolean isEnabledHeadParticle() {
-        return config != null ? config.enabledHeadParticle : true;
+        return isConfigAvailable() ? config.enabledHeadParticle : true;
     }
 
     public static boolean isEnabledLinkParticle() {
-        return config != null ? config.enabledLinkParticle : false;
+        return isConfigAvailable() ? config.enabledLinkParticle : false;
     }
 
     public static boolean isEnabledNotice() {
-        return config != null ? config.enabledNotice : true;
+        return isConfigAvailable() ? config.enabledNotice : true;
     }
 
     /* */

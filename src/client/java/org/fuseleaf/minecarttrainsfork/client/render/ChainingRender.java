@@ -1,9 +1,10 @@
-package org.fuseleaf.minecarttrainsfork.client.manager;
+package org.fuseleaf.minecarttrainsfork.client.render;
 
 import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
-import org.fuseleaf.minecarttrainsfork.util.IChainableUtil;
+import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
+import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.joml.Matrix4f;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -21,12 +22,12 @@ import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.phys.Vec3;
 
-public class ParticleManager {
+public class ChainingRender {
 
     public static void linkLine(AbstractMinecart cart, Vec3 camPos, PoseStack poseStack, SubmitNodeCollector submitNodeCollector) {
         double lineWidth = 0.05;
 
-        if (ClientLoadManager.isAPIFound()) {
+        if (ClientConfigManager.isConfigAvailable()) {
             if (!ClientConfigManager.isEnabledLinkLine()) {
                 return;
             }
@@ -40,7 +41,7 @@ public class ParticleManager {
             return;
         }
 
-        UUID parentCartUuid = ((IChainableUtil) cart).getParentUUID();
+        UUID parentCartUuid = ((Chainable) cart).getParentUUID();
 
         if (parentCartUuid == null) {
             return;
@@ -177,7 +178,7 @@ public class ParticleManager {
         double particleHeight = 0.8;
         SimpleParticleType particleType = ParticleTypes.COMPOSTER;
 
-        if (ClientLoadManager.isAPIFound()) {
+        if (ClientConfigManager.isConfigAvailable()) {
             if (!ClientConfigManager.isEnabledHeadParticle()) {
                 return;
             }
@@ -192,13 +193,13 @@ public class ParticleManager {
             return;
         }
 
-        UUID parentCartUuid = ((IChainableUtil) cart).getParentUUID();
+        UUID parentCartUuid = ((Chainable) cart).getParentUUID();
 
         if (parentCartUuid != null && world.getEntity(parentCartUuid) != null) {
             return;
         }
 
-        if (!ClientLoadManager.isAPIFound() || !ClientConfigManager.isAlwaysRenderHeadParticle()) {
+        if (!ClientConfigManager.isConfigAvailable() || !ClientConfigManager.isAlwaysRenderHeadParticle()) {
             if (cart.isVehicle()) {
                 return;
             }
@@ -236,7 +237,7 @@ public class ParticleManager {
         double particleHeight = 0.6;
         SimpleParticleType particleType = ParticleTypes.SOUL_FIRE_FLAME;
 
-        if (ClientLoadManager.isAPIFound()) {
+        if (ClientConfigManager.isConfigAvailable()) {
             if (!ClientConfigManager.isEnabledLinkParticle()) {
                 return;
             }
@@ -262,7 +263,7 @@ public class ParticleManager {
             return;
         }
 
-        UUID parentCartUuid = ((IChainableUtil) cart).getParentUUID();
+        UUID parentCartUuid = ((Chainable) cart).getParentUUID();
 
         if (parentCartUuid == null) {
             return;

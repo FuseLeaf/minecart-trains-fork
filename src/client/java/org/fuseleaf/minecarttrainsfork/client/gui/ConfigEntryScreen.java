@@ -1,8 +1,9 @@
-package org.fuseleaf.minecarttrainsfork.client.util;
+package org.fuseleaf.minecarttrainsfork.client.gui;
 
-import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigValue;
-import org.fuseleaf.minecarttrainsfork.client.manager.ClientLoadManager;
-import org.fuseleaf.minecarttrainsfork.extension.config.ConfigValue;
+import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
+import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
+import org.fuseleaf.minecarttrainsfork.client.util.ToastUtil;
+import org.fuseleaf.minecarttrainsfork.extension.config.ConfigData;
 
 import me.shedaniel.autoconfig.AutoConfigClient;
 import net.minecraft.ChatFormatting;
@@ -12,11 +13,11 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
-public class ConfigEntryScreenUtil extends Screen {
+public class ConfigEntryScreen extends Screen {
 
     private final Screen parent;
 
-    public ConfigEntryScreenUtil(Screen parent) {
+    public ConfigEntryScreen(Screen parent) {
         super(Component.literal(""));
         this.parent = parent;
     }
@@ -47,9 +48,9 @@ public class ConfigEntryScreenUtil extends Screen {
                 isMultiplayerWorld ? server.withStyle(ChatFormatting.RED) : server.withStyle(ChatFormatting.GREEN),
                 button -> {
                     if (isMultiplayerWorld) {
-                        this.minecraft.gui.setScreen(IllegalOperationScreenUtil.get(this));
+                        this.minecraft.gui.setScreen(IllegalOperationScreen.get(this));
                     } else {
-                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ConfigValue.class, this).get());
+                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ConfigData.class, this).get());
                     }
                 }
             )
@@ -62,8 +63,8 @@ public class ConfigEntryScreenUtil extends Screen {
             Button.builder(
                 client.withStyle(ChatFormatting.GREEN),
                 button -> {
-                    if (ClientLoadManager.isAPIFound()) {
-                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ClientConfigValue.class, this).get());
+                    if (ClientConfigManager.isConfigAvailable()) {
+                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ClientConfigData.class, this).get());
                     } else {
                         ToastUtil.toast("toast.minecart-trains-fork.apinotfound.title", "toast.minecart-trains-fork.apinotfound.desc");
                         this.minecraft.gui.setScreen(parent);

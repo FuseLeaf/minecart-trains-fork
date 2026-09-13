@@ -1,8 +1,8 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
-import org.fuseleaf.minecarttrainsfork.manager.NetworkManager;
-import org.fuseleaf.minecarttrainsfork.util.IChainableUtil;
-import org.fuseleaf.minecarttrainsfork.util.UnLinkUtil;
+import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
+import org.fuseleaf.minecarttrainsfork.chaining.Connection;
+import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,7 +22,7 @@ public class EntityMixin {
         Entity self = (Entity)(Object)this;
 
         if (self instanceof AbstractMinecart) {
-            NetworkManager.sendRelationshipPayload(self.getUUID(), ((IChainableUtil) self).getParentUUID(), player.level());
+            NetworkManager.sendRelationshipPayload(self.getUUID(), ((Chainable) self).getParentUUID(), player.level());
         }
     }
 
@@ -31,12 +31,12 @@ public class EntityMixin {
         Entity self = (Entity)(Object)this;
 
         if (self instanceof AbstractMinecart) {
-            IChainableUtil icu = (IChainableUtil)(Object)this;
+            Chainable icu = (Chainable)(Object)this;
             Level world = ((Entity)(Object)this).level();
 
             if (!world.isClientSide()) {
                 ServerLevel serverWorld = (ServerLevel)world;
-                UnLinkUtil.unlinkHandle(icu, serverWorld);
+                Connection.unlink(icu, serverWorld);
             }
         }
     }

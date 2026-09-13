@@ -17,5 +17,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Run Checkstyle
+      - name: Run CheckstyleMain
         run: ./gradlew checkstyleMain --no-daemon --stacktrace
+
+      - name: Run CheckstyleClient
+        run: ./gradlew checkstyleClient --no-daemon --stacktrace

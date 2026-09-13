@@ -1,9 +1,9 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
-import org.fuseleaf.minecarttrainsfork.manager.TrainManager;
-import org.fuseleaf.minecarttrainsfork.util.DataUtil;
-import org.fuseleaf.minecarttrainsfork.util.IChainableUtil;
-import org.fuseleaf.minecarttrainsfork.util.LinkUtil;
+import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
+import org.fuseleaf.minecarttrainsfork.chaining.ChainableData;
+import org.fuseleaf.minecarttrainsfork.chaining.Connection;
+import org.fuseleaf.minecarttrainsfork.train.TrainBehavior;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 @Mixin(AbstractMinecart.class)
-public class AbstractMinecartMixin implements IChainableUtil {
+public class AbstractMinecartMixin implements Chainable {
 
     @Unique private @Nullable UUID parentUUID;
 
@@ -45,7 +45,7 @@ public class AbstractMinecartMixin implements IChainableUtil {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void injectTick(CallbackInfo ci) {
-        TrainManager.tick((AbstractMinecart)(Object)this);
+        TrainBehavior.tick((AbstractMinecart)(Object)this);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class AbstractMinecartMixin implements IChainableUtil {
 
     @Override
     public void setChainedParent(@Nullable AbstractMinecart newParent) {
-        LinkUtil.setChainedParent(newParent, (IChainableUtil)(Object)this);
+        Connection.setChainedParent(newParent, (Chainable)(Object)this);
     }
 
 
@@ -78,16 +78,16 @@ public class AbstractMinecartMixin implements IChainableUtil {
 
     @Override
     public void setChainedChild(@Nullable AbstractMinecart newChild) {
-        LinkUtil.setChainedChild(newChild, (IChainableUtil)(Object)this);
+        Connection.setChainedChild(newChild, (Chainable)(Object)this);
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     public void injectAddAdditionalSaveData(ValueOutput writeView, CallbackInfo ci) {
-        DataUtil.writeData(writeView, (IChainableUtil)(Object)this);
+        ChainableData.write(writeView, (Chainable)(Object)this);
     }
 
     @Inject(method="readAdditionalSaveData", at = @At("TAIL"))
     public void injectReadAdditionalSaveData(ValueInput readView, CallbackInfo ci) {
-        DataUtil.readData(readView, (IChainableUtil)(Object)this);
+        ChainableData.read(readView, (Chainable)(Object)this);
     }
 }

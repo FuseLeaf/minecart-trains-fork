@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.phys.Vec3;
 
-import org.fuseleaf.minecarttrainsfork.client.manager.ParticleManager;
+import org.fuseleaf.minecarttrainsfork.client.render.ChainingRender;
 import org.fuseleaf.minecarttrainsfork.util.LogUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -53,19 +53,19 @@ public class AbstractMinecartRendererMixin {
         CallbackInfo ci
     ) {
         try {
-            ParticleManager.linkParticle(entity);
+            ChainingRender.linkParticle(entity);
         } catch (Throwable ex) {
             LogUtil.print("Link particle error: " + ex);
         }
 
         try {
-            ParticleManager.headParticle(entity);
+            ChainingRender.headParticle(entity);
         } catch (Throwable ex) {
             LogUtil.print("Head particle error: " + ex);
         }
 
         try {
-            ParticleManager.linkLine(entity, cachedCameraPos, cachedStack, cachedCollector);
+            ChainingRender.linkLine(entity, cachedCameraPos, cachedStack, cachedCollector);
         } catch (Throwable ex) {
             LogUtil.print("Link line error: " + ex);
         }

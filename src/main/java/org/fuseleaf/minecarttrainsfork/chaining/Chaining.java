@@ -1,12 +1,11 @@
-package org.fuseleaf.minecarttrainsfork.manager;
+package org.fuseleaf.minecarttrainsfork.chaining;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
-import org.fuseleaf.minecarttrainsfork.util.IChainableUtil;
-import org.fuseleaf.minecarttrainsfork.util.UnLinkUtil;
+import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -26,7 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
-public class EventManager {
+public class Chaining {
 
     private static InteractionResult link(ItemStack stack, AbstractMinecart cart, Player player, InteractionHand hand, Level world, @NonNull DataComponentType<@NonNull UUID> parentID) {
         if (
@@ -39,16 +38,16 @@ public class EventManager {
             if (uuid != null && !cart.getUUID().equals(uuid)) {
                 if (server.getEntity(uuid) instanceof AbstractMinecart parent) {
 
-                    IChainableUtil parentIChainable = (IChainableUtil)parent;
-                    IChainableUtil cartIChainable = (IChainableUtil)cart;
+                    Chainable parentIChainable = (Chainable)parent;
+                    Chainable cartIChainable = (Chainable)cart;
 
-                    Set<IChainableUtil> train = new HashSet<>();
+                    Set<Chainable> train = new HashSet<>();
                     train.add(parentIChainable);
 
                     AbstractMinecart nextChainedParent;
 
-                    while ((nextChainedParent = (parentIChainable).getChainedParent()) != null && !train.contains((IChainableUtil)nextChainedParent)) {
-                        train.add((IChainableUtil)nextChainedParent);
+                    while ((nextChainedParent = (parentIChainable).getChainedParent()) != null && !train.contains((Chainable)nextChainedParent)) {
+                        train.add((Chainable)nextChainedParent);
                     }
 
                     if (train.contains(cartIChainable) || (parentIChainable).getChainedChild() != null) {
@@ -60,10 +59,10 @@ public class EventManager {
                     } else {
 
                         if ((cartIChainable).getChainedParent() != null) {
-                            IChainableUtil.unsetChainedParentChild(cartIChainable, (IChainableUtil)((cartIChainable).getChainedParent()));
+                            Chainable.unsetChainedParentChild(cartIChainable, (Chainable)((cartIChainable).getChainedParent()));
                         }
 
-                        IChainableUtil.setChainedParentChild(parentIChainable, cartIChainable);
+                        Chainable.setChainedParentChild(parentIChainable, cartIChainable);
 
                         NetworkManager.sendRelationshipPayload(cart.getUUID(), parent.getUUID(), world);
                     }
@@ -92,7 +91,7 @@ public class EventManager {
 
     private static InteractionResult unlink(Player player, ItemStack stack, AbstractMinecart cart, Level world, InteractionHand hand) {
         if (player.isShiftKeyDown() && stack.getItem() instanceof AxeItem) {
-            IChainableUtil icu = (IChainableUtil)(Object)cart;
+            Chainable icu = (Chainable)(Object)cart;
 
             if (!player.isCreative() && (icu.getParentUUID() != null || icu.getChildUUID() != null) && hand != null) {
                 stack.hurtAndBreak(1, player, hand);
@@ -100,7 +99,7 @@ public class EventManager {
 
             if (!world.isClientSide()) {
                 ServerLevel serverWorld = (ServerLevel)world;
-                UnLinkUtil.unlinkHandle(icu, serverWorld);
+                Connection.unlink(icu, serverWorld);
             }
 
             return InteractionResult.SUCCESS;
@@ -110,7 +109,7 @@ public class EventManager {
         }
     }
 
-    public static @NonNull InteractionResult init(Entity entity, Player player, InteractionHand hand, Level world, @NonNull DataComponentType<@NonNull UUID> parentID) {
+    public static @NonNull InteractionResult handle(Entity entity, Player player, InteractionHand hand, Level world, @NonNull DataComponentType<@NonNull UUID> parentID) {
         if (entity instanceof AbstractMinecart cart && hand != null) {
             ItemStack stack = player.getItemInHand(hand);
 

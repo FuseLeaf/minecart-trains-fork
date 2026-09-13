@@ -3,17 +3,14 @@
 	"id": "minecart-trains-fork",
 	"version": "${version}",
 	"name": "Minecart Trains Fork",
-	"description": "Forked from Minecart Trains, This mod adds additional mechanics to make minecart transportation more fun and useful as a train system!",
+	"description": "Inspired by the original Minecart Trains by LarsenR. Reworks and improves minecart transportation, making it more fun and useful as a train system!",
 	"authors": [
-		"KSSJW"
-	],
-	"contributors": [
-		"LarsenR"
+		"FuseLeaf Studio"
 	],
 	"contact": {
-		"homepage": "https://github.com/KSSJW/minecart-trains-fork",
-		"issues": "https://github.com/KSSJW/minecart-trains-fork/issues",
-		"sources": "https://github.com/KSSJW/minecart-trains-fork"
+		"homepage": "https://github.com/FuseLeaf/minecart-trains-fork",
+		"issues": "https://github.com/FuseLeaf/minecart-trains-fork/issues",
+		"sources": "https://github.com/FuseLeaf/minecart-trains-fork"
 	},
 	"license": "GPL-3.0",
 	"icon": "assets/minecart-trains-fork/logo/icon.png",

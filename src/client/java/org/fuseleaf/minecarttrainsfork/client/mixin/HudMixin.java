@@ -1,7 +1,6 @@
 package org.fuseleaf.minecarttrainsfork.client.mixin;
 
-import org.fuseleaf.minecarttrainsfork.client.manager.ClientConfigManager;
-import org.fuseleaf.minecarttrainsfork.client.manager.ClientLoadManager;
+import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,7 +16,7 @@ public class HudMixin {
     private void injectSetOverlayMessage(Component message, boolean tinted, CallbackInfo ci) {
         String insertion = message.getStyle().getInsertion();
 
-        if (ClientLoadManager.isAPIFound() == true
+        if (ClientConfigManager.isConfigAvailable() == true
             && ClientConfigManager.isEnabledNotice() == false
             && "MINECARTTRAINSFORK_OPTIONAL".equals(insertion)
         ) {

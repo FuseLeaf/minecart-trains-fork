@@ -1,11 +1,11 @@
-package org.fuseleaf.minecarttrainsfork.client.util;
+package org.fuseleaf.minecarttrainsfork.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
-public class IllegalOperationScreenUtil {
+public class IllegalOperationScreen {
 
     // 拦截提示界面
     public static ConfirmScreen get(Screen parent) {
