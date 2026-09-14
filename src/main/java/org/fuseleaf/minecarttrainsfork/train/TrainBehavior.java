@@ -82,4 +82,24 @@ public class TrainBehavior {
             NetworkManager.sendRelationshipPayload(null, childCart.getUUID(), cart.level());
         }
     }
+
+    public static double setMaxSpeed(AbstractMinecart cart, double maxSpeed) {
+        if (cart == null || cart.level().isClientSide()) {
+            return maxSpeed;
+        }
+
+        Chainable cartChainable = (Chainable)cart;
+        AbstractMinecart parentCart = cartChainable.getChainedParent();
+
+        if (parentCart != null) {
+            double distance = parentCart.distanceTo(cart) - 1;
+            double cartSpacing = ConfigManager.getCartSpacing();
+
+            if (distance > cartSpacing) {
+                maxSpeed *= 1.5;
+            }
+        }
+
+        return maxSpeed;
+    }
 }

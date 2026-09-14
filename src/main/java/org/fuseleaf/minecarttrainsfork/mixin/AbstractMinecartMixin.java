@@ -10,8 +10,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.UUID;
+
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -46,6 +49,11 @@ public class AbstractMinecartMixin implements Chainable {
     @Inject(method = "tick", at = @At("HEAD"))
     private void injectTick(CallbackInfo ci) {
         TrainBehavior.tick((AbstractMinecart)(Object)this);
+    }
+
+    @Inject(method = "getMaxSpeed", at = @At("RETURN"), cancellable = true)
+    private void injectGetMaxSpeed(ServerLevel level, CallbackInfoReturnable<Double> cir) {
+        cir.setReturnValue(TrainBehavior.setMaxSpeed((AbstractMinecart)(Object)this, cir.getReturnValue()));
     }
 
     @Override
