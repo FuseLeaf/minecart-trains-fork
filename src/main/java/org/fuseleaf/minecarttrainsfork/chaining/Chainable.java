@@ -3,8 +3,7 @@ package org.fuseleaf.minecarttrainsfork.chaining;
 import java.util.UUID;
 
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public interface Chainable {
 
@@ -36,7 +35,7 @@ public interface Chainable {
     }
 
     // 建立连接：先清理旧关系，再建立新关系
-    static void setChainedParentChild(@NotNull Chainable parent, @NotNull Chainable child) {
+    static void setChainedParentChild(Chainable parent, Chainable child) {
         unsetChainedParentChild(parent, (Chainable)parent.getChainedChild());
         unsetChainedParentChild(child, (Chainable)child.getChainedParent());
         parent.setChainedChild(child.getAbstractMinecartEntity());

@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
