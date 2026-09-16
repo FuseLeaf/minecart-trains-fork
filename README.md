@@ -90,7 +90,7 @@ Configuration files that will be generated after installing `Cloth Config API`:
 
 ```
 minecart-trains-fork-server.json
-    [brakingAfterTrainSeparation] Value: true/false, Default: true
+    [brakingAfterSeparation] Value: true/false, Default: true
     [cartSpacing] Range: 3 - 10, Default: 5
 
 ```
