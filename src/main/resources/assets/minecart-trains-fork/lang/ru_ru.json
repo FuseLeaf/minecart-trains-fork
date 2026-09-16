@@ -1,28 +1,28 @@
 {
-    "toast.minecart-trains-fork.apinotfound.title": "Cloth Config API не найден",
-    "toast.minecart-trains-fork.apinotfound.desc": "Вам необходимо установить §6Cloth Config API.",
+    "toast.minecart-trains-fork.api_not_found.title": "Cloth Config API не найден",
+    "toast.minecart-trains-fork.api_not_found.desc": "Вам необходимо установить §6Cloth Config API.",
 
-    "message.minecart-trains-fork.chainingstarted": "Режим Сцепки Вкл",
-    "message.minecart-trains-fork.chainingcleared": "Режим Сцепки Выкл",
-    "message.minecart-trains-fork.invalidchaining": "Недопустимая Сцепка",
+    "message.minecart-trains-fork.chaining_started": "Режим Сцепки Вкл",
+    "message.minecart-trains-fork.chaining_cleared": "Режим Сцепки Выкл",
+    "message.minecart-trains-fork.invalid_chaining": "Недопустимая Сцепка",
 
-    "screen.minecart-trains-fork.ConfigEntryScreen.title": "Настройки Minecart Trains Fork",
-    "screen.minecart-trains-fork.ConfigEntryScreen.server": "Сервер",
-    "screen.minecart-trains-fork.ConfigEntryScreen.client": "Клиент",
-    "screen.minecart-trains-fork.ConfigEntryScreen.cancel": "Закрыть",
+    "screen.minecart-trains-fork.config_entry_screen.title": "Настройки Minecart Trains Fork",
+    "screen.minecart-trains-fork.config_entry_screen.server": "Сервер",
+    "screen.minecart-trains-fork.config_entry_screen.client": "Клиент",
+    "screen.minecart-trains-fork.config_entry_screen.cancel": "Закрыть",
 
-    "screen.minecart-trains-fork.IllegalOperationScreen.title": "§cОперация Требующая Прав",
-    "screen.minecart-trains-fork.IllegalOperationScreen.desc": ":( Не расстраивайтесь, это не ошибка.\n\nПохоже, что вы играете в многопользовательскую игру.\nВы не можете изменить конфигурацию сервера с помощью этой настройки.\n\nЕсли вам необходимо внести изменения, пожалуйста, свяжитесь с администратором сервера\nчтобы изменить конфигурационный файл\n§6... > config > minecart-trains-fork-server.json",
-    "screen.minecart-trains-fork.IllegalOperationScreen.yes": "OK",
-    "screen.minecart-trains-fork.IllegalOperationScreen.no": "OK",
+    "screen.minecart-trains-fork.illegal_operation_screen.title": "§cОперация Требующая Прав",
+    "screen.minecart-trains-fork.illegal_operation_screen.desc": ":( Не расстраивайтесь, это не ошибка.\n\nПохоже, что вы играете в многопользовательскую игру.\nВы не можете изменить конфигурацию сервера с помощью этой настройки.\n\nЕсли вам необходимо внести изменения, пожалуйста, свяжитесь с администратором сервера\nчтобы изменить конфигурационный файл\n§6... > config > minecart-trains-fork-server.json",
+    "screen.minecart-trains-fork.illegal_operation_screen.yes": "OK",
+    "screen.minecart-trains-fork.illegal_operation_screen.no": "OK",
 
     "text.autoconfig.minecart-trains-fork-server.title": "Настройки Minecart Trains Fork (Сервер)",
 
     "text.autoconfig.minecart-trains-fork-server.category.general": "Общие Настройки",
 
-    "text.autoconfig.minecart-trains-fork-server.option.brakingAfterTrainSeparation.@PrefixText": "Вагонетка",
+    "text.autoconfig.minecart-trains-fork-server.option.brakingAfterSeparation.@PrefixText": "Вагонетка",
 
-    "text.autoconfig.minecart-trains-fork-server.option.brakingAfterTrainSeparation": "    Торможение После Отсоединения Вагонетки",
+    "text.autoconfig.minecart-trains-fork-server.option.brakingAfterSeparation": "    Торможение После Отсоединения Вагонетки",
     "text.autoconfig.minecart-trains-fork-server.option.cartSpacing": "    Расстояние Между Вагонетками",
     "text.autoconfig.minecart-trains-fork-server.option.cartSpacing.@Tooltip": "Пример: 5 -> 0.5",
 
@@ -31,25 +31,19 @@
     "text.autoconfig.minecart-trains-fork-client.category.general": "Общие Настройки",
     "text.autoconfig.minecart-trains-fork-client.category.advanced": "Расширенные Настройки",
 
-    "text.autoconfig.minecart-trains-fork-client.option.enabledLinkLine.@PrefixText": "Связующая Цепь",
+    "text.autoconfig.minecart-trains-fork-client.option.showHeadParticle.@PrefixText": "Частицы От Ведущей Вагонетки",
 
-    "text.autoconfig.minecart-trains-fork-client.option.enabledLinkLine": "    Показать Связующую Цепь",
+    "text.autoconfig.minecart-trains-fork-client.option.showHeadParticle": "    Показывать Стандартные Частицы От Ведущей Вагонетки",
 
-    "text.autoconfig.minecart-trains-fork-client.option.enabledHeadParticle.@PrefixText": "Частицы От Ведущей Вагонетки",
+    "text.autoconfig.minecart-trains-fork-client.option.showLinkParticle.@PrefixText": "Частицы Над Местом Сцепки",
 
-    "text.autoconfig.minecart-trains-fork-client.option.enabledHeadParticle": "    Показывать Стандартные Частицы От Ведущей Вагонетки",
+    "text.autoconfig.minecart-trains-fork-client.option.showLinkParticle": "    Показывать Стандартные Частицы Над Местом Сцепки",
 
-    "text.autoconfig.minecart-trains-fork-client.option.lineWidth.@PrefixText": "Связующая Цепь",
+    "text.autoconfig.minecart-trains-fork-client.option.showNotice.@PrefixText": "Уведомления",
 
-    "text.autoconfig.minecart-trains-fork-client.option.enabledLinkParticle.@PrefixText": "Частицы Над Местом Сцепки",
+    "text.autoconfig.minecart-trains-fork-client.option.showNotice": "    Показывать Уведомления О Сцепке",
 
-    "text.autoconfig.minecart-trains-fork-client.option.enabledLinkParticle": "    Показывать Стандартные Частицы Над Местом Сцепки",
-
-    "text.autoconfig.minecart-trains-fork-client.option.enabledNotice.@PrefixText": "Уведомления",
-
-    "text.autoconfig.minecart-trains-fork-client.option.enabledNotice": "    Показывать Уведомления О Сцепке",
-
-    "text.autoconfig.minecart-trains-fork-client.option.alwaysRenderHeadParticle.@PrefixText": "Частицы От Ведущей Вагонетки",
+    "text.autoconfig.minecart-trains-fork-client.option.alwaysShowHeadParticle.@PrefixText": "Частицы От Ведущей Вагонетки",
 
     "text.autoconfig.minecart-trains-fork-client.option.linkParticleType.@PrefixText": "Частицы Над Местом Сцепки"
 }
