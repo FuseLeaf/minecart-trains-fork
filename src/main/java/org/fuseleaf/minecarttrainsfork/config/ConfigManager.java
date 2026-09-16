@@ -16,6 +16,8 @@ public class ConfigManager {
         return config != null;
     }
 
+    /* Get Configuration */
+
     public static boolean isEnabledBrakingAfterTrainSeparation() {
         return isConfigAvailable() ? config.brakingAfterTrainSeparation : true;
     }
