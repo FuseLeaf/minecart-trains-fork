@@ -16,7 +16,7 @@ public class PlayerMixin {
     @Unique private ItemStack lastMainHand = ItemStack.EMPTY;
 
     @Inject(method = "tick", at = @At("TAIL"))
-    private void onTick(CallbackInfo ci) {
+    private void injectTick(CallbackInfo ci) {
         Player player = (Player)(Object)this;
         ItemStack current = player.getMainHandItem();
 

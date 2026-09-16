@@ -13,7 +13,7 @@ import net.minecraft.world.item.Items;
 public class ItemStackMixin {
 
     @Inject(method = "split", at = @At("RETURN"))
-    private void onSplit(int amount, CallbackInfoReturnable<ItemStack> cir) {
+    private void injectSplit(int amount, CallbackInfoReturnable<ItemStack> cir) {
         ItemStack result = cir.getReturnValue();
 
         if (result.is(Items.IRON_CHAIN)) {
@@ -22,7 +22,7 @@ public class ItemStackMixin {
     }
 
     @Inject(method = "copyWithCount", at = @At("RETURN"))
-    private void onCopyWithCount(int count, CallbackInfoReturnable<ItemStack> cir) {
+    private void injectCopyWithCount(int count, CallbackInfoReturnable<ItemStack> cir) {
         ItemStack result = cir.getReturnValue();
 
         if (result.is(Items.IRON_CHAIN)) {

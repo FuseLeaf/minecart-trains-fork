@@ -15,7 +15,7 @@ import net.minecraft.world.item.Items;
 public class ItemEntityMixin {
 
     @Inject(method = "playerTouch", at = @At("HEAD"))
-    private void onPickup(Player player, CallbackInfo ci) {
+    private void injectPlayerTouch(Player player, CallbackInfo ci) {
         ItemEntity self = (ItemEntity)(Object)this;
         ItemStack stack = self.getItem();
 

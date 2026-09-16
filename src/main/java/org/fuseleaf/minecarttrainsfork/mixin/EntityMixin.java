@@ -27,7 +27,7 @@ public class EntityMixin {
     }
 
     @Inject(method = "remove", at = @At("TAIL"))
-    private void onRemove(Entity.RemovalReason reason, CallbackInfo ci) {
+    private void injectRemove(Entity.RemovalReason reason, CallbackInfo ci) {
         Entity self = (Entity)(Object)this;
 
         if (self instanceof AbstractMinecart) {
