@@ -20,7 +20,7 @@ public class HudMixin {
             && ClientConfigManager.isEnabledNotice() == false
             && "MINECARTTRAINSFORK_OPTIONAL".equals(insertion)
         ) {
-            ci.cancel();    // 拦截，不显示在 Action Bar
+            ci.cancel();    // Intercept
         }
     }
 }

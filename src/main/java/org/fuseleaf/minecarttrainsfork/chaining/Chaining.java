@@ -113,14 +113,14 @@ public class Chaining {
         if (entity instanceof AbstractMinecart cart && hand != null) {
             ItemStack stack = player.getItemInHand(hand);
 
-            // 链接逻辑
+            // link
             InteractionResult linkResult = link(stack, cart, player, hand, world, parentID);
 
             if (linkResult == InteractionResult.SUCCESS) {
                 return InteractionResult.SUCCESS;
             }
 
-            // 解编逻辑
+            // unlink
             InteractionResult unlinkResult = unlink(player, stack, cart, world, hand);
 
             if (unlinkResult == InteractionResult.SUCCESS) {

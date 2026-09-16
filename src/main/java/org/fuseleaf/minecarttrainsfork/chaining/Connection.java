@@ -44,7 +44,7 @@ public class Connection {
         UUID parentUUID = icu.getParentUUID();
         UUID childUUID = icu.getChildUUID();
 
-        // 清理父节点
+        // Clear parent node
         if (parentUUID != null) {
 
             Entity parentEntity = world.getEntity(parentUUID);
@@ -56,7 +56,7 @@ public class Connection {
             }
         }
 
-        // 清理子节点
+        // Clear child node
         if (childUUID != null) {
             Entity childEntity = world.getEntity(childUUID);
 
@@ -67,26 +67,26 @@ public class Connection {
             }
         }
 
-        // 保存连接状态
+        // Keep connection status
         boolean wasLinked = parentUUID != null || childUUID != null;
         boolean hadParent = parentUUID != null;
         boolean hadChild = childUUID != null;
 
-        // 最后清理自己
+        // Finally clean self
         icu.setParentUUID(null);
         icu.setChildUUID(null);
 
         NetworkManager.sendRelationshipPayload(((AbstractMinecart) icu).getUUID(), null, world);
         NetworkManager.sendRelationshipPayload(null, ((AbstractMinecart) icu).getUUID(), world);
 
-        // 根据情况掉落铁链
+        // Drop iron chains according to the situation
         if (wasLinked && icu instanceof Entity entity) {
             double dx;
             double dy;
             double dz;
 
-            float yaw = entity.getYRot(); // 矿车朝向角度
-            double offset = 0.6;         // 偏移距离，控制掉落在轨道两侧
+            float yaw = entity.getYRot();
+            double offset = 0.6;
 
             dx = Math.cos(Math.toRadians(yaw + 90)) * offset;
             dy = 0.8;

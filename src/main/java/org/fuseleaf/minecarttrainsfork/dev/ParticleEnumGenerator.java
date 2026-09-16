@@ -37,8 +37,8 @@ public class ParticleEnumGenerator {
                 writer.write("// " + SharedConstants.getCurrentVersion().id() + "\n");
 
                 for (int i = 0; i < names.size(); i++) {
-                    String name = names.get(i).toLowerCase();   // 枚举常量名小写
-                    String type = names.get(i); // 对应 ParticleTypes 常量
+                    String name = names.get(i).toLowerCase();
+                    String type = names.get(i);
                     boolean isLast = (i == names.size() - 1);
                     writer.write(name + "(ParticleTypes." + type + ")" + (isLast ? ";" : ",") + "\n");
                 }

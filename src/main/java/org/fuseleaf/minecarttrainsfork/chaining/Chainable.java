@@ -17,7 +17,6 @@ public interface Chainable {
 
     void setChildUUID(@Nullable UUID uuid);
 
-    // 默认实现：客户端断开时清理引用和 ID
     default @Nullable AbstractMinecart getChainedParent() {
         return null;
     }
@@ -34,7 +33,7 @@ public interface Chainable {
         return (AbstractMinecart) this;
     }
 
-    // 建立连接：先清理旧关系，再建立新关系
+    // Establish connections: first clear old relationships, then establish new ones
     static void setChainedParentChild(Chainable parent, Chainable child) {
         unsetChainedParentChild(parent, (Chainable)parent.getChainedChild());
         unsetChainedParentChild(child, (Chainable)child.getChainedParent());
@@ -42,7 +41,7 @@ public interface Chainable {
         child.setChainedParent(parent.getAbstractMinecartEntity());
     }
 
-    // 断开连接：同时清理引用和 ID
+    // Disconnect: Clean up both references and IDs
     static void unsetChainedParentChild(@Nullable Chainable parent, @Nullable Chainable child) {
         if (parent != null) {
             parent.setChainedChild(null);

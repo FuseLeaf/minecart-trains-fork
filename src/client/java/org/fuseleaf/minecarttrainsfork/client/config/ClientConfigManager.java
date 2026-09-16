@@ -19,6 +19,10 @@ public class ClientConfigManager {
         return config != null;
     }
 
+    /* Get Configuration */
+
+    /* General */
+
     public static boolean isEnabledLinkLine() {
         return isConfigAvailable() ? config.enabledLinkLine : true;
     }
@@ -35,7 +39,7 @@ public class ClientConfigManager {
         return isConfigAvailable() ? config.enabledNotice : true;
     }
 
-    /* */
+    /* Advanced */
 
     public static double getLineWidth() {
         return config.lineWidth * 0.01;

@@ -20,10 +20,9 @@ public class PlayerMixin {
         Player player = (Player)(Object)this;
         ItemStack current = player.getMainHandItem();
 
-        // 检查是否发生变化
         if (lastMainHand != null && !ItemStack.matches(current, lastMainHand)) {
             Connection.exit(current, lastMainHand, player);
-            lastMainHand = current.copy();  // 更新缓存
+            lastMainHand = current.copy();  // Refresh Cache
         }
     }
 }
