@@ -9,74 +9,74 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 @Config(name = "minecart-trains-fork-client")
 public class ClientConfigData implements ConfigData {
 
-    /* General */
+    /* # General */
 
-    // Link line
+    // Show Chain
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.PrefixText
-    public boolean enabledLinkLine = true;
+    public boolean showChain = true;
 
-    // Head particle
+    // Show Head Particle
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.PrefixText
-    public boolean enabledHeadParticle = true;
+    public boolean showHeadParticle = true;
 
-    // Link particle
+    // Show Link Particle
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.PrefixText
-    public boolean enabledLinkParticle = false;
+    public boolean showLinkParticle = false;
 
-    // Notice
+    // Show Notice
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.PrefixText
-    public boolean enabledNotice = true;
+    public boolean showNotice = true;
 
-    /* Advanced */
+    /* # Advanced */
 
-    // Width of Link Line
+    // Chain Width
     @ConfigEntry.Category("advanced")
     @ConfigEntry.Gui.PrefixText
     @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-    public int lineWidth = 5;
+    public int chainWidth = 5;
 
-    // Always render head particle
+    // Always show head particle
     @ConfigEntry.Category("advanced")
     @ConfigEntry.Gui.PrefixText
-    public boolean alwaysRenderHeadParticle = false;
+    public boolean alwaysShowHeadParticle = false;
 
-    // Head particle type
+    // Head Particle Type
     @ConfigEntry.Category("advanced")
     @ConfigEntry.ColorPicker
     public ParticleOption headParticleType = ParticleOption.composter;
 
-    // Number of head particle
+    // Head Particle Count
     @ConfigEntry.Category("advanced")
     @ConfigEntry.BoundedDiscrete(min = 1, max = 32)
-    public int headParticleNumber = 6;
+    public int headParticleCount = 6;
 
-    // Height of head particle
+    // Head Particle Height
     @ConfigEntry.Category("advanced")
     @ConfigEntry.BoundedDiscrete(min = 1, max = 20)
     public int headParticleHeight = 14;
 
-    // Cycle of head particle
+    // Head Particle Interval
     @ConfigEntry.Category("advanced")
     @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-    public int headParticleCycle = 40;
+    public int headParticleInterval = 40;
 
-    // Link particle type
+    // Link Particle Type
     @ConfigEntry.Category("advanced")
     @ConfigEntry.Gui.PrefixText
     @ConfigEntry.Gui.EnumHandler
     public ParticleOption linkParticleType = ParticleOption.soul_fire_flame;
 
-    // Height of link particle
+    // Link Particle Height
     @ConfigEntry.Category("advanced")
     @ConfigEntry.BoundedDiscrete(min = 1, max = 20)
     public int linkParticleHeight = 6;
 
-    // Cycle of link particle
+    // Link Particle Interval
     @ConfigEntry.Category("advanced")
     @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-    public int linkParticleCycle = 40;
+    public int linkParticleInterval = 40;
 }

@@ -17,7 +17,7 @@ public class HudMixin {
         String insertion = message.getStyle().getInsertion();
 
         if (ClientConfigManager.isConfigAvailable() == true
-            && ClientConfigManager.isEnabledNotice() == false
+            && ClientConfigManager.shouldShowNotice() == false
             && "MINECARTTRAINSFORK_OPTIONAL".equals(insertion)
         ) {
             ci.cancel();    // Intercept

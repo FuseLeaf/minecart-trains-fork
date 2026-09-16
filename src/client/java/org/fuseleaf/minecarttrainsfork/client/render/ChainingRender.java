@@ -28,11 +28,11 @@ public class ChainingRender {
         double lineWidth = 0.05;
 
         if (ClientConfigManager.isConfigAvailable()) {
-            if (!ClientConfigManager.isEnabledLinkLine()) {
+            if (!ClientConfigManager.shouldShowChain()) {
                 return;
             }
 
-            lineWidth = ClientConfigManager.getLineWidth();
+            lineWidth = ClientConfigManager.getChainWidth();
         }
 
         final double LINE_WIDTH = lineWidth;
@@ -179,12 +179,12 @@ public class ChainingRender {
         SimpleParticleType particleType = ParticleTypes.COMPOSTER;
 
         if (ClientConfigManager.isConfigAvailable()) {
-            if (!ClientConfigManager.isEnabledHeadParticle()) {
+            if (!ClientConfigManager.shouldShowHeadParticle()) {
                 return;
             }
 
-            frameSkip = ClientConfigManager.getHeadParticleCycle();
-            maxSteps = ClientConfigManager.getHeadParticleNumber();
+            frameSkip = ClientConfigManager.getHeadParticleInterval();
+            maxSteps = ClientConfigManager.getHeadParticleCount();
             particleHeight = ClientConfigManager.getHeadParticleHeight();
             particleType = ClientConfigManager.getHeadParticleType();
         }
@@ -199,7 +199,7 @@ public class ChainingRender {
             return;
         }
 
-        if (!ClientConfigManager.isConfigAvailable() || !ClientConfigManager.isAlwaysRenderHeadParticle()) {
+        if (!ClientConfigManager.isConfigAvailable() || !ClientConfigManager.isAlwaysShowHeadParticle()) {
             if (cart.isVehicle()) {
                 return;
             }
@@ -238,11 +238,11 @@ public class ChainingRender {
         SimpleParticleType particleType = ParticleTypes.SOUL_FIRE_FLAME;
 
         if (ClientConfigManager.isConfigAvailable()) {
-            if (!ClientConfigManager.isEnabledLinkParticle()) {
+            if (!ClientConfigManager.shouldShowLinkParticle()) {
                 return;
             }
 
-            frameSkip = ClientConfigManager.getLinkParticleCycle();
+            frameSkip = ClientConfigManager.getLinkParticleInterval();
             particleType = ClientConfigManager.getLinkParticleType();
             particleHeight = ClientConfigManager.getLinkParticleHeight();
         } else {
