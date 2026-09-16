@@ -52,7 +52,7 @@ public class Chaining {
 
                     if (train.contains(cartIChainable) || (parentIChainable).getChainedChild() != null) {
                         player.sendOverlayMessage(Component.translatable(MinecartTrainsFork.MOD_ID + " ")
-                            .append(Component.translatable("message.minecart-trains-fork.invalidchaining"))
+                            .append(Component.translatable("message.minecart-trains-fork.invalid_chaining"))
                             .withStyle(ChatFormatting.RED));
 
                         return InteractionResult.PASS;

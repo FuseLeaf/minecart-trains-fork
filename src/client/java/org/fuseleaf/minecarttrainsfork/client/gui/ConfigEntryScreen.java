@@ -30,7 +30,7 @@ public class ConfigEntryScreen extends Screen {
         boolean inWorld = this.minecraft.level != null && this.minecraft.player != null;
         boolean isMultiplayerWorld = inWorld && this.minecraft.getCurrentServer() != null;
 
-        Component title = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.title");
+        Component title = Component.translatable("screen.minecart-trains-fork.config_entry_screen.title");
         this.addRenderableWidget(
             new StringWidget(
                 w / 2 - this.font.width(title) / 2,
@@ -42,7 +42,7 @@ public class ConfigEntryScreen extends Screen {
             )
         );
 
-        MutableComponent server = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.server");
+        MutableComponent server = Component.translatable("screen.minecart-trains-fork.config_entry_screen.server");
         this.addRenderableWidget(
             Button.builder(
                 isMultiplayerWorld ? server.withStyle(ChatFormatting.RED) : server.withStyle(ChatFormatting.GREEN),
@@ -58,7 +58,7 @@ public class ConfigEntryScreen extends Screen {
             .build()
         );
 
-        MutableComponent client = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.client");
+        MutableComponent client = Component.translatable("screen.minecart-trains-fork.config_entry_screen.client");
         this.addRenderableWidget(
             Button.builder(
                 client.withStyle(ChatFormatting.GREEN),
@@ -66,7 +66,7 @@ public class ConfigEntryScreen extends Screen {
                     if (ClientConfigManager.isConfigAvailable()) {
                         this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ClientConfigData.class, this).get());
                     } else {
-                        ToastUtil.toast("toast.minecart-trains-fork.apinotfound.title", "toast.minecart-trains-fork.apinotfound.desc");
+                        ToastUtil.toast("toast.minecart-trains-fork.api_not_found.title", "toast.minecart-trains-fork.api_not_found.desc");
                         this.minecraft.gui.setScreen(parent);
                     }
                 }
@@ -75,7 +75,7 @@ public class ConfigEntryScreen extends Screen {
             .build()
         );
 
-        Component cancel = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.cancel");
+        Component cancel = Component.translatable("screen.minecart-trains-fork.config_entry_screen.cancel");
         this.addRenderableWidget(
             Button.builder(
                 cancel,

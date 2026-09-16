@@ -10,10 +10,10 @@ public class IllegalOperationScreen {
     public static ConfirmScreen get(Screen parent) {
         return new ConfirmScreen(
             (result) -> Minecraft.getInstance().gui.setScreen(parent), // Return to the previous menu
-            Component.translatable("screen.minecart-trains-fork.IllegalOperationScreen.title"),
-            Component.translatable("screen.minecart-trains-fork.IllegalOperationScreen.desc"),
-            Component.translatable("screen.minecart-trains-fork.IllegalOperationScreen.yes"),
-            Component.translatable("screen.minecart-trains-fork.IllegalOperationScreen.no")
+            Component.translatable("screen.minecart-trains-fork.illegal_operation_screen.title"),
+            Component.translatable("screen.minecart-trains-fork.illegal_operation_screen.desc"),
+            Component.translatable("screen.minecart-trains-fork.illegal_operation_screen.yes"),
+            Component.translatable("screen.minecart-trains-fork.illegal_operation_screen.no")
         );
     }
 }

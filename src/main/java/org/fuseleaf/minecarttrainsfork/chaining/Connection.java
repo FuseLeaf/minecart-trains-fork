@@ -116,7 +116,7 @@ public class Connection {
 
         if (!lastMainHand.is(Items.IRON_CHAIN) && current.is(Items.IRON_CHAIN)) {
             player.sendOverlayMessage(Component.translatable(MinecartTrainsFork.MOD_ID + " ")
-                .append(Component.translatable("message.minecart-trains-fork.chainingstarted"))
+                .append(Component.translatable("message.minecart-trains-fork.chaining_started"))
                 .setStyle(Style.EMPTY.withInsertion("MINECARTTRAINSFORK_OPTIONAL"))
                 .withStyle(ChatFormatting.GREEN));
         }
@@ -133,7 +133,7 @@ public class Connection {
             }
 
             player.sendOverlayMessage(Component.translatable(MinecartTrainsFork.MOD_ID + " ")
-                .append(Component.translatable("message.minecart-trains-fork.chainingcleared"))
+                .append(Component.translatable("message.minecart-trains-fork.chaining_cleared"))
                 .setStyle(Style.EMPTY.withInsertion("MINECARTTRAINSFORK_OPTIONAL"))
                 .withStyle(ChatFormatting.YELLOW));
         }
