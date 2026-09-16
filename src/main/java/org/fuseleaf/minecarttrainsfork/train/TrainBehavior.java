@@ -44,7 +44,7 @@ public class TrainBehavior {
                     cart.setDeltaMovement(Vec3.ZERO);
                 }
             } else {
-                if (ConfigManager.isEnabledBrakingAfterTrainSeparation()) {
+                if (ConfigManager.shouldBrakingAfterSeparation()) {
                     AbstractMinecart currentCart = cart;
                     Chainable currentCartChainable = (Chainable) currentCart;
                     AbstractMinecart currentParentCart = currentCartChainable.getChainedParent();

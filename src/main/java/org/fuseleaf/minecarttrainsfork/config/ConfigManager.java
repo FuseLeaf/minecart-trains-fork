@@ -16,12 +16,12 @@ public class ConfigManager {
         return config != null;
     }
 
-    /* Get Configuration */
+    /* # Get Configuration */
 
-    /* General */
+    /* ## General */
 
-    public static boolean isEnabledBrakingAfterTrainSeparation() {
-        return isConfigAvailable() ? config.brakingAfterTrainSeparation : true;
+    public static boolean shouldBrakingAfterSeparation() {
+        return isConfigAvailable() ? config.brakingAfterSeparation : true;
     }
 
     public static double getCartSpacing() {
