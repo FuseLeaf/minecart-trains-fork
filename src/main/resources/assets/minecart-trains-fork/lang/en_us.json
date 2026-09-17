@@ -59,7 +59,7 @@
     "text.autoconfig.minecart-trains-fork-client.option.headParticleHeight": "    Head Particle Height",
     "text.autoconfig.minecart-trains-fork-client.option.headParticleInterval": "    Head Particle Interval",
 
-    "text.autoconfig.minecart-trains-fork-client.option.linkParticleType.@PrefixText": "Link Particles",
+    "text.autoconfig.minecart-trains-fork-client.option.linkParticleType.@PrefixText": "Link Particle",
 
     "text.autoconfig.minecart-trains-fork-client.option.linkParticleType": "    Link Particle Type",
     "text.autoconfig.minecart-trains-fork-client.option.linkParticleHeight": "    Link Particle Height",
