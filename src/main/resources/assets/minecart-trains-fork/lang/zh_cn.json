@@ -16,7 +16,7 @@
     "screen.minecart-trains-fork.illegal_operation_screen.yes": "好",
     "screen.minecart-trains-fork.illegal_operation_screen.no": "好",
 
-    "text.autoconfig.minecart-trains-fork-server.title": "Minecart Trains Fork 配置 (服务端)",
+    "text.autoconfig.minecart-trains-fork-server.title": "Minecart Trains Fork 配置（服务端）",
 
     "text.autoconfig.minecart-trains-fork-server.category.general": "通用",
 
@@ -26,7 +26,7 @@
     "text.autoconfig.minecart-trains-fork-server.option.cartSpacing": "    车辆间距",
     "text.autoconfig.minecart-trains-fork-server.option.cartSpacing.@Tooltip": "例如：5 -> 0.5 方块",
 
-    "text.autoconfig.minecart-trains-fork-client.title": "Minecart Trains Fork 配置 (客户端)",
+    "text.autoconfig.minecart-trains-fork-client.title": "Minecart Trains Fork 配置（客户端）",
 
     "text.autoconfig.minecart-trains-fork-client.category.general": "通用",
     "text.autoconfig.minecart-trains-fork-client.category.advanced": "高级",
