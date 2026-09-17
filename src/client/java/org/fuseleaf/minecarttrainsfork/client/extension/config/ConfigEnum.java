@@ -11,7 +11,7 @@ public class ConfigEnum {
 
     public enum ParticleOption {
 
-        // 26.2 Fabric
+        // 26.3 Fabric
         angry_villager(ParticleTypes.ANGRY_VILLAGER),
         ash(ParticleTypes.ASH),
         bubble(ParticleTypes.BUBBLE),
@@ -77,12 +77,14 @@ public class ConfigEnum {
         noxious_gas(ParticleTypes.NOXIOUS_GAS),
         noxious_gas_cloud(ParticleTypes.NOXIOUS_GAS_CLOUD),
         ominous_spawning(ParticleTypes.OMINOUS_SPAWNING),
+        orange_poplar_leaves(ParticleTypes.ORANGE_POPLAR_LEAVES),
         pale_oak_leaves(ParticleTypes.PALE_OAK_LEAVES),
         pause_mob_growth(ParticleTypes.PAUSE_MOB_GROWTH),
         poof(ParticleTypes.POOF),
         portal(ParticleTypes.PORTAL),
         raid_omen(ParticleTypes.RAID_OMEN),
         rain(ParticleTypes.RAIN),
+        red_poplar_leaves(ParticleTypes.RED_POPLAR_LEAVES),
         reset_mob_growth(ParticleTypes.RESET_MOB_GROWTH),
         reverse_portal(ParticleTypes.REVERSE_PORTAL),
         scrape(ParticleTypes.SCRAPE),
@@ -114,7 +116,8 @@ public class ConfigEnum {
         wax_on(ParticleTypes.WAX_ON),
         white_ash(ParticleTypes.WHITE_ASH),
         white_smoke(ParticleTypes.WHITE_SMOKE),
-        witch(ParticleTypes.WITCH);
+        witch(ParticleTypes.WITCH),
+        yellow_poplar_leaves(ParticleTypes.YELLOW_POPLAR_LEAVES);
 
         @NonNull private final SimpleParticleType type;
 
