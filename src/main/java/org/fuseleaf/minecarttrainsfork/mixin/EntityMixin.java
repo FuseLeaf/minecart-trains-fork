@@ -3,6 +3,7 @@ package org.fuseleaf.minecarttrainsfork.mixin;
 import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.chaining.Connection;
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,7 +28,7 @@ public class EntityMixin {
     }
 
     @Inject(method = "remove", at = @At("TAIL"))
-    private void onRemove(Entity.RemovalReason reason, CallbackInfo ci) {
+    private void injectRemove(Entity.RemovalReason reason, CallbackInfo ci) {
         Entity self = (Entity)(Object)this;
 
         if (self instanceof AbstractMinecart) {

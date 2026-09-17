@@ -4,14 +4,19 @@ import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.chaining.ChainableData;
 import org.fuseleaf.minecarttrainsfork.chaining.Connection;
 import org.fuseleaf.minecarttrainsfork.train.TrainBehavior;
-import org.jetbrains.annotations.Nullable;
+
+import org.jspecify.annotations.Nullable;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.UUID;
+
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -29,7 +34,7 @@ public class AbstractMinecartMixin implements Chainable {
     }
 
     @Override
-    public void setParentUUID(UUID uuid) {
+    public void setParentUUID(@Nullable UUID uuid) {
         this.parentUUID = uuid;
     }
 
@@ -39,13 +44,18 @@ public class AbstractMinecartMixin implements Chainable {
     }
 
     @Override
-    public void setChildUUID(UUID uuid) {
+    public void setChildUUID(@Nullable UUID uuid) {
         this.childUUID = uuid;
     }
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void injectTick(CallbackInfo ci) {
         TrainBehavior.tick((AbstractMinecart)(Object)this);
+    }
+
+    @Inject(method = "getMaxSpeed", at = @At("RETURN"), cancellable = true)
+    private void injectGetMaxSpeed(ServerLevel level, CallbackInfoReturnable<Double> cir) {
+        cir.setReturnValue(TrainBehavior.setMaxSpeed((AbstractMinecart)(Object)this, cir.getReturnValue()));
     }
 
     @Override

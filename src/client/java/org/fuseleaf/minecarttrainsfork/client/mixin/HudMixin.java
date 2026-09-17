@@ -1,6 +1,7 @@
 package org.fuseleaf.minecarttrainsfork.client.mixin;
 
 import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,10 +18,10 @@ public class HudMixin {
         String insertion = message.getStyle().getInsertion();
 
         if (ClientConfigManager.isConfigAvailable() == true
-            && ClientConfigManager.isEnabledNotice() == false
+            && ClientConfigManager.shouldShowNotice() == false
             && "MINECARTTRAINSFORK_OPTIONAL".equals(insertion)
         ) {
-            ci.cancel();    // 拦截，不显示在 Action Bar
+            ci.cancel();    // Intercept
         }
     }
 }

@@ -3,6 +3,7 @@ package org.fuseleaf.minecarttrainsfork.network;
 import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
+
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -12,6 +13,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
 
 public record RelationshipPayload(@Nullable UUID childUUID, @Nullable UUID parentUUID) implements CustomPacketPayload {
+
     public static @NonNull final Type<RelationshipPayload> TYPE = new Type<>(
         Identifier.fromNamespaceAndPath(MinecartTrainsFork.MOD_ID, "relationship")
     );

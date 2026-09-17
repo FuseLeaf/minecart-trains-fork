@@ -1,6 +1,7 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
 import org.fuseleaf.minecarttrainsfork.chaining.Connection;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,14 +17,13 @@ public class PlayerMixin {
     @Unique private ItemStack lastMainHand = ItemStack.EMPTY;
 
     @Inject(method = "tick", at = @At("TAIL"))
-    private void onTick(CallbackInfo ci) {
+    private void injectTick(CallbackInfo ci) {
         Player player = (Player)(Object)this;
         ItemStack current = player.getMainHandItem();
 
-        // 检查是否发生变化
         if (lastMainHand != null && !ItemStack.matches(current, lastMainHand)) {
             Connection.exit(current, lastMainHand, player);
-            lastMainHand = current.copy();  // 更新缓存
+            lastMainHand = current.copy();  // Refresh Cache
         }
     }
 }

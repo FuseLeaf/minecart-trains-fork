@@ -11,7 +11,7 @@ public class ConfigEnum {
 
     public enum ParticleOption {
 
-        // 26.2
+        // 26.2 Fabric
         angry_villager(ParticleTypes.ANGRY_VILLAGER),
         ash(ParticleTypes.ASH),
         bubble(ParticleTypes.BUBBLE),

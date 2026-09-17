@@ -9,7 +9,9 @@ import org.fuseleaf.minecarttrainsfork.network.RelationshipPayload;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 

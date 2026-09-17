@@ -5,7 +5,7 @@ jobs:
   checkstyle:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup JDK
@@ -17,8 +17,5 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Run CheckstyleMain
-        run: ./gradlew checkstyleMain --no-daemon --stacktrace
-
-      - name: Run CheckstyleClient
-        run: ./gradlew checkstyleClient --no-daemon --stacktrace
+      - name: Run Checkstyle
+        run: ./gradlew checkstyleMain checkstyleClient --no-daemon --stacktrace

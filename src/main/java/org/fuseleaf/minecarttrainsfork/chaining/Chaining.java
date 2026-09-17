@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
+
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -52,7 +53,7 @@ public class Chaining {
 
                     if (train.contains(cartIChainable) || (parentIChainable).getChainedChild() != null) {
                         player.sendOverlayMessage(Component.translatable(MinecartTrainsFork.MOD_ID + " ")
-                            .append(Component.translatable("message.minecart-trains-fork.invalidchaining"))
+                            .append(Component.translatable("message.minecart-trains-fork.invalid_chaining"))
                             .withStyle(ChatFormatting.RED));
 
                         return InteractionResult.PASS;
@@ -113,14 +114,14 @@ public class Chaining {
         if (entity instanceof AbstractMinecart cart && hand != null) {
             ItemStack stack = player.getItemInHand(hand);
 
-            // 链接逻辑
+            // link
             InteractionResult linkResult = link(stack, cart, player, hand, world, parentID);
 
             if (linkResult == InteractionResult.SUCCESS) {
                 return InteractionResult.SUCCESS;
             }
 
-            // 解编逻辑
+            // unlink
             InteractionResult unlinkResult = unlink(player, stack, cart, world, hand);
 
             if (unlinkResult == InteractionResult.SUCCESS) {

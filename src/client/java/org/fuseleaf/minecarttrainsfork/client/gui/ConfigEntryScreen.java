@@ -1,11 +1,10 @@
 package org.fuseleaf.minecarttrainsfork.client.gui;
 
-import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
-import org.fuseleaf.minecarttrainsfork.client.util.ToastUtil;
 import org.fuseleaf.minecarttrainsfork.extension.config.ConfigData;
 
 import me.shedaniel.autoconfig.AutoConfigClient;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.StringWidget;
@@ -30,7 +29,7 @@ public class ConfigEntryScreen extends Screen {
         boolean inWorld = this.minecraft.level != null && this.minecraft.player != null;
         boolean isMultiplayerWorld = inWorld && this.minecraft.getCurrentServer() != null;
 
-        Component title = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.title");
+        Component title = Component.translatable("screen.minecart-trains-fork.config_entry_screen.title");
         this.addRenderableWidget(
             new StringWidget(
                 w / 2 - this.font.width(title) / 2,
@@ -42,7 +41,7 @@ public class ConfigEntryScreen extends Screen {
             )
         );
 
-        MutableComponent server = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.server");
+        MutableComponent server = Component.translatable("screen.minecart-trains-fork.config_entry_screen.server");
         this.addRenderableWidget(
             Button.builder(
                 isMultiplayerWorld ? server.withStyle(ChatFormatting.RED) : server.withStyle(ChatFormatting.GREEN),
@@ -58,24 +57,19 @@ public class ConfigEntryScreen extends Screen {
             .build()
         );
 
-        MutableComponent client = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.client");
+        MutableComponent client = Component.translatable("screen.minecart-trains-fork.config_entry_screen.client");
         this.addRenderableWidget(
             Button.builder(
                 client.withStyle(ChatFormatting.GREEN),
                 button -> {
-                    if (ClientConfigManager.isConfigAvailable()) {
-                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ClientConfigData.class, this).get());
-                    } else {
-                        ToastUtil.toast("toast.minecart-trains-fork.apinotfound.title", "toast.minecart-trains-fork.apinotfound.desc");
-                        this.minecraft.gui.setScreen(parent);
-                    }
+                    this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ClientConfigData.class, this).get());
                 }
             )
             .bounds(w / 2 - 50, h / 2 + 25, 100, 20)
             .build()
         );
 
-        Component cancel = Component.translatable("screen.minecart-trains-fork.ConfigEntryScreen.cancel");
+        Component cancel = Component.translatable("screen.minecart-trains-fork.config_entry_screen.cancel");
         this.addRenderableWidget(
             Button.builder(
                 cancel,
