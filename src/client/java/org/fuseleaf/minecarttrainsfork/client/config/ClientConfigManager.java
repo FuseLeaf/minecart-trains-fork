@@ -3,6 +3,7 @@ package org.fuseleaf.minecarttrainsfork.client.config;
 import net.minecraft.core.particles.SimpleParticleType;
 
 import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
+
 import org.jspecify.annotations.NonNull;
 
 public class ClientConfigManager {

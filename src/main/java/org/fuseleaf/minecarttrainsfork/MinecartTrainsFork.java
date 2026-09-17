@@ -1,6 +1,7 @@
 package org.fuseleaf.minecarttrainsfork;
 
 import org.fuseleaf.minecarttrainsfork.initializer.Initializer;
+
 import net.fabricmc.api.ModInitializer;
 
 public class MinecartTrainsFork implements ModInitializer {

@@ -4,7 +4,9 @@ import org.fuseleaf.minecarttrainsfork.chaining.Chainable;
 import org.fuseleaf.minecarttrainsfork.chaining.ChainableData;
 import org.fuseleaf.minecarttrainsfork.chaining.Connection;
 import org.fuseleaf.minecarttrainsfork.train.TrainBehavior;
+
 import org.jspecify.annotations.Nullable;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

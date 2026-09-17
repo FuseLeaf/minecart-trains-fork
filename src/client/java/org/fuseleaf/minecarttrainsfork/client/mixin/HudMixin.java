@@ -1,6 +1,7 @@
 package org.fuseleaf.minecarttrainsfork.client.mixin;
 
 import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;

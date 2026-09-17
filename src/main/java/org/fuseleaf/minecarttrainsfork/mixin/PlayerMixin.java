@@ -1,6 +1,7 @@
 package org.fuseleaf.minecarttrainsfork.mixin;
 
 import org.fuseleaf.minecarttrainsfork.chaining.Connection;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

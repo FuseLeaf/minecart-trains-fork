@@ -4,6 +4,7 @@ import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
 import org.fuseleaf.minecarttrainsfork.extension.config.ConfigData;
 
 import me.shedaniel.autoconfig.AutoConfigClient;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.StringWidget;

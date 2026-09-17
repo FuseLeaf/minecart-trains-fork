@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
 import org.fuseleaf.minecarttrainsfork.network.NetworkManager;
+
 import org.jspecify.annotations.Nullable;
 
 import net.minecraft.ChatFormatting;

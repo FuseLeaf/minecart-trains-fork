@@ -3,6 +3,7 @@ package org.fuseleaf.minecarttrainsfork.chaining;
 import java.util.UUID;
 
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+
 import org.jspecify.annotations.Nullable;
 
 public interface Chainable {
