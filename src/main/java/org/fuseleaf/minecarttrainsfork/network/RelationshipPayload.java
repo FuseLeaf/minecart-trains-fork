@@ -12,6 +12,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
 
 public record RelationshipPayload(@Nullable UUID childUUID, @Nullable UUID parentUUID) implements CustomPacketPayload {
+
     public static @NonNull final Type<RelationshipPayload> TYPE = new Type<>(
         Identifier.fromNamespaceAndPath(MinecartTrainsFork.MOD_ID, "relationship")
     );

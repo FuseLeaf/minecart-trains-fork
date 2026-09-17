@@ -18,6 +18,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 
 @Mixin(AbstractMinecartRenderer.class)
 public class AbstractMinecartRendererMixin {
+
     private Vec3 cachedCameraPos;
 
     private PoseStack cachedStack;
