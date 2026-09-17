@@ -1,8 +1,6 @@
 package org.fuseleaf.minecarttrainsfork.client.gui;
 
-import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.fuseleaf.minecarttrainsfork.client.extension.config.ClientConfigData;
-import org.fuseleaf.minecarttrainsfork.client.util.ToastUtil;
 import org.fuseleaf.minecarttrainsfork.extension.config.ConfigData;
 
 import me.shedaniel.autoconfig.AutoConfigClient;
@@ -63,12 +61,7 @@ public class ConfigEntryScreen extends Screen {
             Button.builder(
                 client.withStyle(ChatFormatting.GREEN),
                 button -> {
-                    if (ClientConfigManager.isConfigAvailable()) {
-                        this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ClientConfigData.class, this).get());
-                    } else {
-                        ToastUtil.toast("toast.minecart-trains-fork.api_not_found.title", "toast.minecart-trains-fork.api_not_found.desc");
-                        this.minecraft.gui.setScreen(parent);
-                    }
+                    this.minecraft.gui.setScreen(AutoConfigClient.getConfigScreen(ClientConfigData.class, this).get());
                 }
             )
             .bounds(w / 2 - 50, h / 2 + 25, 100, 20)
