@@ -1,13 +1,16 @@
 package org.fuseleaf.minecarttrainsfork.client;
 
+import org.fuseleaf.minecarttrainsfork.MinecartTrainsFork;
 import org.fuseleaf.minecarttrainsfork.client.initializer.ClientInitializer;
 
-import net.fabricmc.api.ClientModInitializer;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 
-public class MinecartTrainsForkClient implements ClientModInitializer {
+@Mod(value = MinecartTrainsFork.MOD_ID, dist = Dist.CLIENT)
+public class MinecartTrainsForkClient {
 
-    @Override
-    public void onInitializeClient() {
-        ClientInitializer.init();
+    public MinecartTrainsForkClient(IEventBus iEventBus) {
+        ClientInitializer.init(iEventBus);
     }
 }

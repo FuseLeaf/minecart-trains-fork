@@ -2,14 +2,15 @@ package org.fuseleaf.minecarttrainsfork;
 
 import org.fuseleaf.minecarttrainsfork.initializer.Initializer;
 
-import net.fabricmc.api.ModInitializer;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 
-public class MinecartTrainsFork implements ModInitializer {
+@Mod(MinecartTrainsFork.MOD_ID)
+public class MinecartTrainsFork {
 
-    public static final String MOD_ID = "minecart-trains-fork";
+    public static final String MOD_ID = "minecart_trains_fork";
 
-    @Override
-    public void onInitialize() {
-        Initializer.init();
+    public MinecartTrainsFork(IEventBus iEventBus) {
+        Initializer.init(iEventBus);
     }
 }
