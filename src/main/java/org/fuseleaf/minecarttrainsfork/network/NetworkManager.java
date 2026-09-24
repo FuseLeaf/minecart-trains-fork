@@ -2,23 +2,18 @@ package org.fuseleaf.minecarttrainsfork.network;
 
 import java.util.UUID;
 
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
+
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class NetworkManager {
 
     public static void sendRelationshipPayload(UUID childUUID, UUID parentUUID, Level level) {
-        if (level == null || !(level instanceof ServerLevel serverLevel)) {
+        if (!(level instanceof ServerLevel)) {
             return;
         }
 
-        for (ServerPlayer p : serverLevel.getServer().getPlayerList().getPlayers()) {
-            if (p != null) {
-                ServerPlayNetworking.send(p, new RelationshipPayload(childUUID, parentUUID));
-            }
-        }
+        PacketDistributor.sendToAllPlayers(new RelationshipPayload(childUUID, parentUUID));
     }
 }

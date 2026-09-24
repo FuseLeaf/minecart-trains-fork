@@ -4,24 +4,20 @@ import org.fuseleaf.minecarttrainsfork.client.config.ClientConfigManager;
 import org.fuseleaf.minecarttrainsfork.client.gui.ConfigEntryScreen;
 import org.fuseleaf.minecarttrainsfork.client.util.ToastUtil;
 
-import com.terraformersmc.modmenu.api.ConfigScreenFactory;
-import com.terraformersmc.modmenu.api.ModMenuApi;
+import net.minecraft.client.gui.screens.Screen;
 
-public class ConfigEntry implements ModMenuApi {
+public class ConfigEntry {
 
-    @Override
-    public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> {
-            if (ClientConfigManager.isConfigAvailable()) {
-                return new ConfigEntryScreen(parent);
-            } else {
-                ToastUtil.toast(
-                    "toast.minecart-trains-fork.api_not_found.title",
-                    "toast.minecart-trains-fork.api_not_found.desc"
-                );
+    public static Screen get(Screen parent) {
+        if (ClientConfigManager.isConfigAvailable()) {
+            return new ConfigEntryScreen(parent);
+        } else {
+            ToastUtil.toast(
+                "toast.minecart-trains-fork.api_not_found.title",
+                "toast.minecart-trains-fork.api_not_found.desc"
+            );
 
-                return parent;
-            }
-        };
+            return parent;
+        }
     }
 }
